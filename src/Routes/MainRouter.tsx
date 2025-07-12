@@ -1,20 +1,18 @@
-import { lazy } from "react";
-import Loadable from "../Components/Loadable";
 import { createBrowserRouter } from "react-router-dom";
 import Partner from "../Pages/Partner";
-const DashboardDefault = Loadable(lazy(() => import("../Pages/Dashboard")));
-const Sales = Loadable(lazy(() => import("../Pages/Sales")));
-const Feed = Loadable(lazy(() => import("../Pages/Feed")));
-const Stock = Loadable(lazy(() => import("../Pages/Stock")));
+import Dashboard from "../Pages/Dashboard";
+import Sales from "../Pages/Sales";
+import Feed from "../Pages/Feed";
+import Stock from "../Pages/Stock";
 
 const MainRouter = createBrowserRouter([
   {
     path: "/",
-    element: <DashboardDefault />,
+    element: <Dashboard />,
   },
   {
     path: "/dashboard",
-    element: <DashboardDefault />,
+    element: <Dashboard />,
   },
   {
     path: "/sales",

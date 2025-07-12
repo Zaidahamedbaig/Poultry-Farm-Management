@@ -3,11 +3,15 @@ import Drawer from "../Components/NavBar/Drawer";
 import { handlerDrawerOpen, useGetMenuMaster } from "../api/menu";
 import Toolbar from "@mui/material/Toolbar";
 import Box from "@mui/material/Box";
-
-import { Outlet } from "react-router-dom";
+import GFTable from "../Components/Table/Table";
+import { useEffect } from "react";
 
 const Partner = () => {
   const { menuMaster } = useGetMenuMaster();
+
+  useEffect(()=>{
+    
+  },[])
   return (
     <Box sx={{ display: "flex", width: "100%" }}>
       <Header
@@ -16,9 +20,7 @@ const Partner = () => {
           handlerDrawerOpen(!menuMaster?.isDashboardDrawerOpened)
         }
       />
-
       <Drawer />
-
       <Box
         component="main"
         sx={{ width: "calc(100% - 260px)", flexGrow: 1, p: { xs: 2, sm: 3 } }}
@@ -33,8 +35,22 @@ const Partner = () => {
             flexDirection: "column",
           }}
         >
-          <h1>Partner</h1>
-          <Outlet />
+          <GFTable
+            columns={[
+              { id: "id", name: "Id" },
+              { id: "name", name: "Name" },
+              { id: "phone", name: "Phone" },
+              { id: "address", name: "Address" },
+            ]}
+            data={[
+              {
+                id: 1,
+                name: "zaid",
+                phone: 9008775929,
+                address: "Areoplane building road  JJ Hatti chitradurga 577501",
+              },
+            ]}
+          />
         </Box>
       </Box>
     </Box>
