@@ -1,9 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import Partner from "../Pages/Partner";
-import Dashboard from "../Pages/Dashboard";
-import Sales from "../Pages/Sales";
-import Feed from "../Pages/Feed";
-import Stock from "../Pages/Stock";
+import { Dashboard, Feed, Partner, Sales, Stock } from "../Pages";
 
 const MainRouter = createBrowserRouter([
   {
@@ -26,9 +22,9 @@ const MainRouter = createBrowserRouter([
     path: "/stock",
     element: <Stock />,
   },
-    {
+  {
     path: "/partners",
-    element: <Partner/>,
+    element: <Partner />,
   },
 ]);
 

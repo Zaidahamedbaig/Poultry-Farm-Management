@@ -1,18 +1,20 @@
 import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import MainCard from "./MainCard";
 import NavBar from "./Components/NavBar/index";
 import MainRouterr from "./Routes/MainRouter";
 import { RouterProvider } from "react-router-dom";
+import { Provider } from "react-redux";
+import { store } from "./store/store";
 
 function App() {
-  return<>
-  <RouterProvider router={MainRouterr}>
-     <NavBar/>
-  </RouterProvider>
-  </> 
-  ;
+  return (
+    <>
+      <Provider store={store}>
+        <RouterProvider router={MainRouterr}>
+          <NavBar />
+        </RouterProvider>
+      </Provider>
+    </>
+  );
 }
 
 export default App;
-

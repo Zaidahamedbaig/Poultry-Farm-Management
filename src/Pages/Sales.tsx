@@ -6,7 +6,7 @@ import Box from "@mui/material/Box";
 
 import { Outlet } from "react-router-dom";
 
-const Sales = () => {
+export const Sales = () => {
   const { menuMaster } = useGetMenuMaster();
   return (
     <Box sx={{ display: "flex", width: "100%" }}>

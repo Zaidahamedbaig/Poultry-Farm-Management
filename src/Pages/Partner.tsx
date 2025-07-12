@@ -4,14 +4,20 @@ import { handlerDrawerOpen, useGetMenuMaster } from "../api/menu";
 import Toolbar from "@mui/material/Toolbar";
 import Box from "@mui/material/Box";
 import GFTable from "../Components/Table/Table";
+import { useAppDispatch, useAppSelector } from "../store/store";
+import { selectPartnerDetails } from "../store/slices/partner/partnerSlice";
 import { useEffect } from "react";
+import { getPartnerDetails } from "../store/thunk/partner/getPartnerDetails";
 
-const Partner = () => {
+export const Partner = () => {
   const { menuMaster } = useGetMenuMaster();
+  const partnerDetails = useAppSelector(selectPartnerDetails);
+  const dispatch = useAppDispatch();
 
-  useEffect(()=>{
-    
-  },[])
+  useEffect(() => {
+    dispatch(getPartnerDetails());
+  }, []);
+
   return (
     <Box sx={{ display: "flex", width: "100%" }}>
       <Header
