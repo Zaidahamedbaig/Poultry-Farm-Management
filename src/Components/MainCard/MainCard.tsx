@@ -1,12 +1,9 @@
 import PropTypes from "prop-types";
-
-// material-ui
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardHeader from "@mui/material/CardHeader";
 import Divider from "@mui/material/Divider";
 
-// header style
 const headerSX = {
   p: 2.5,
   "& .MuiCardHeader-action": { m: "0px auto", alignSelf: "center" },
