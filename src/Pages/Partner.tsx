@@ -48,14 +48,7 @@ export const Partner = () => {
               { id: "phone", name: "Phone" },
               { id: "address", name: "Address" },
             ]}
-            data={[
-              {
-                id: 1,
-                name: "zaid",
-                phone: 9008775929,
-                address: "Areoplane building road  JJ Hatti chitradurga 577501",
-              },
-            ]}
+            data={partnerDetails}
           />
         </Box>
       </Box>

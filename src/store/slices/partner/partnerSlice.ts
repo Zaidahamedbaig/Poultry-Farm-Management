@@ -6,7 +6,8 @@ import { getPartnerDetails } from "../../thunk/partner/getPartnerDetails";
 const initialState: PartnerState = {
   partnerDetails: [],
   loading: false,
-  error: "",
+  error: ''
+  
 };
 
 export const partnerSlice = createSlice({
@@ -20,20 +21,17 @@ export const partnerSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getPartnerDetails.pending, (state) => {
-        state.loading = true;
-        state.error = "";
+        state.loading = true
+        state.error = ''
       })
-      .addCase(
-        getPartnerDetails.fulfilled,
-        (state, action: PayloadAction<PartnerDetail[]>) => {
-          state.loading = false;
-          state.partnerDetails = action.payload;
-        }
-      )
+      .addCase(getPartnerDetails.fulfilled, (state, action: PayloadAction<PartnerDetail[]>) => {
+        state.loading = false
+        state.partnerDetails = action.payload
+      })
       .addCase(getPartnerDetails.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload as string;
-      });
+        state.loading = false
+        state.error = action.payload as string
+      })
   },
 });
 
