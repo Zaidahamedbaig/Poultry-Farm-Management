@@ -1,24 +1,9 @@
-import { Router, Request, Response } from "express";
+import { Router } from "express";
+import { addPartner, getAllPartners } from "../controllers/partner/partner";
 
 const router = Router();
 
-router.get("/details", (req: Request, res: Response) => {
-  res.json({
-    data: [
-      {
-        id: 1,
-        name: "zaid",
-        phone: 9008775929,
-        address: "Areoplane building road  JJ Hatti chitradurga 577501",
-      },
-      {
-        id: 2,
-        name: "Javeed",
-        phone: 9008775929,
-        address: "Areoplane building road  JJ Hatti chitradurga 577501",
-      },
-    ],
-  });
-});
+router.post("/add", addPartner);
+router.get("/all", getAllPartners);
 
 export default router;

@@ -4,9 +4,10 @@
   "description": "To make it easy for you to get started with GitLab, here's a list of recommended next steps.",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
-    "build": "tsc",
-    "start": "node dist/index.js"
+    "start:dev": "dotenv -e environments/.env.dev -- ts-node-dev --respawn --transpile-only src/index.ts",
+    "start:test": "dotenv -e environments/.env.test -- ts-node-dev --respawn --transpile-only src/index.ts",
+    "start:prod": "npm run build && dotenv -e environments/.env.prod -- node dist/index.js",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -21,12 +22,16 @@
   "homepage": "https://gitlab.com/apps-3825/pms-backend#readme",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^5.1.0"
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
+    "mongoose": "^8.16.3",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
     "@types/node": "^24.0.13",
+    "dotenv-cli": "^8.0.0",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.8.3"
   }
