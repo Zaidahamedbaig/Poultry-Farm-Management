@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import { Link, useLocation, matchPath } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
-// material-ui
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Avatar from "@mui/material/Avatar";
 import Chip from "@mui/material/Chip";
@@ -10,13 +9,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-
-// project imports
-import IconButton from "../../../../@extended/IconButton";
-
 import { handlerDrawerOpen, useGetMenuMaster } from "../../../../../api/menu";
-
-// ==============================|| NAVIGATION - LIST ITEM ||============================== //
 
 export default function NavItem({
   item,
@@ -61,6 +54,9 @@ export default function NavItem({
     pathname
   );
 
+  const light = theme.palette.primary.light;
+  const dark = theme.palette.primary.dark;
+
   const textColor = "text.primary";
   const iconSelectedColor = "primary.main";
 
@@ -79,18 +75,18 @@ export default function NavItem({
             py: !drawerOpen && level === 1 ? 1.25 : 1,
             ...(drawerOpen && {
               "&:hover": {
-                bgcolor: "primary.lighter",
+                bgcolor: light,
                 ...theme.applyStyles("dark", { bgcolor: "divider" }),
               },
               "&.Mui-selected": {
-                bgcolor: "primary.lighter",
+                bgcolor: light,
                 ...theme.applyStyles("dark", { bgcolor: "divider" }),
-                borderRight: "2px solid",
-                borderColor: "primary.main",
+                borderRight: "2px solid ",
+                borderColor: dark,
                 color: iconSelectedColor,
                 "&:hover": {
                   color: iconSelectedColor,
-                  bgcolor: "primary.lighter",
+                  bgcolor: light,
                   ...theme.applyStyles("dark", { bgcolor: "divider" }),
                 },
               },
@@ -109,7 +105,7 @@ export default function NavItem({
             <ListItemIcon
               sx={(theme) => ({
                 minWidth: 28,
-                color: isSelected ? iconSelectedColor : textColor,
+                color: isSelected ? dark : textColor,
                 ...(!drawerOpen && {
                   borderRadius: 1.5,
                   width: 36,
@@ -117,7 +113,7 @@ export default function NavItem({
                   alignItems: "center",
                   justifyContent: "center",
                   "&:hover": {
-                    bgcolor: "secondary.lighter",
+                    bgcolor: light,
                     ...theme.applyStyles("dark", {
                       bgcolor: "secondary.light",
                     }),
@@ -125,7 +121,7 @@ export default function NavItem({
                 }),
                 ...(!drawerOpen &&
                   isSelected && {
-                    bgcolor: "primary.lighter",
+                    bgcolor: light,
                     ...theme.applyStyles("dark", { bgcolor: "primary.900" }),
                     "&:hover": {
                       bgcolor: "primary.lighter",
@@ -144,7 +140,7 @@ export default function NavItem({
               primary={
                 <Typography
                   variant="h6"
-                  sx={{ color: isSelected ? iconSelectedColor : textColor }}
+                  sx={{ color: isSelected ? dark : textColor }}
                 >
                   {item.title}
                 </Typography>
@@ -161,47 +157,6 @@ export default function NavItem({
             />
           )}
         </ListItemButton>
-        {(drawerOpen || (!drawerOpen && level !== 1)) &&
-          item?.actions &&
-          item?.actions.map((action: any, index: any) => {
-            const ActionIcon = action.icon;
-            const callAction = action?.function;
-            return (
-              <IconButton
-                key={index}
-                {...(action.type === "function" && {
-                  onClick: (event: any) => {
-                    event.stopPropagation();
-                    callAction();
-                  },
-                })}
-                {...(action.type === "link" && {
-                  component: Link,
-                  to: action.url,
-                  target: action.target ? "_blank" : "_self",
-                })}
-                color="secondary"
-                variant="outlined"
-                sx={{
-                  position: "absolute",
-                  top: 12,
-                  right: 20,
-                  zIndex: 1202,
-                  width: 20,
-                  height: 20,
-                  mr: -1,
-                  ml: 1,
-                  color: "secondary.dark",
-                  borderColor: isSelected ? "primary.light" : "secondary.light",
-                  "&:hover": {
-                    borderColor: isSelected ? "primary.main" : "secondary.main",
-                  },
-                }}
-              >
-                <ActionIcon style={{ fontSize: "0.625rem" }} />
-              </IconButton>
-            );
-          })}
       </Box>
     </>
   );

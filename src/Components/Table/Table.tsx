@@ -1,4 +1,3 @@
-import * as React from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -7,15 +6,9 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { ITableColumn } from "../../models/table";
-
-function createData(id: number, name: string, address: string, phone: number) {
-  return { name, id, address, phone };
-}
-
-const rows = [
-  createData(1, "zaid", "umar circle", 973172564),
-  createData(2, "Javeed", "umar circle", 9008775929),
-];
+import { Button, useTheme } from "@mui/material";
+import Edit from "@mui/icons-material/Edit";
+import { Add, Delete } from "@mui/icons-material";
 
 export default function GFTable({
   columns,
@@ -24,31 +17,93 @@ export default function GFTable({
   columns: ITableColumn[];
   data: Record<string, any>[];
 }) {
-  return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            {columns.map((item) => (
-              <TableCell align="center" sx={{ fontWeight: 900 }}>
-                {item.name}
-              </TableCell>
-            ))}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {data?.map((row) => (
-            <TableRow
-              key={row.id}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+  const theme = useTheme();
+  const main = theme.palette.primary.main;
+  const textColor = theme.palette.primary.contrastText;
+  const light = theme.palette.primary.light;
+
+  const getVariant = (index: number) => {
+    switch (index) {
+      case 0:
+        return "contained";
+      case 1:
+        return "outlined";
+      case 2:
+        return "text";
+      default:
+        return "text";
+    }
+  };
+
+  const getEndIcon = (actionType: string) => {
+    switch (actionType) {
+      case "EDIT":
+        return <Edit />;
+      case "DELETE":
+        return <Delete />;
+      case "ADD":
+        return <Add />;
+      default:
+        return <Add />;
+    }
+  };
+
+  const getTableData = (column: ITableColumn, row:  any, index: number) => {
+    if (column.type === "action") {
+      if (column.actions) {
+        return column.actions.map((action: any, index: number) => {
+          return (
+            <Button
+              sx={{ marginRight: "10px" }}
+              onClick={() => action.handler(row)}
+              variant={getVariant(index)}
+              endIcon={getEndIcon(action.actionType)}
             >
-              {columns.map((column) => (
-                <TableCell align="center">{row[column.id]}</TableCell>
+              {action.actionType}
+            </Button>
+          );
+        });
+      }
+    } else if (column.id === "id") {
+      return index + 1;
+    } else {
+      return row[column.id];
+    }
+  };
+
+  return (
+    <>
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableHead sx={{ backgroundColor: "#B2860D" }}>
+            <TableRow>
+              {columns.map((item) => (
+                <TableCell
+                  key={item.name}
+                  align="center"
+                  sx={{ fontWeight: 600, fontSize: 18, color: textColor }}
+                >
+                  {item.name}
+                </TableCell>
               ))}
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+            {data?.map((row, index) => (
+              <TableRow
+                key={row.id}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              >
+                {columns.map((column) => (
+                  <TableCell key={`${row.id}-${column.id}`} align="center">
+                    {getTableData(column, row, index)}
+                  </TableCell>
+                ))}
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </>
   );
 }

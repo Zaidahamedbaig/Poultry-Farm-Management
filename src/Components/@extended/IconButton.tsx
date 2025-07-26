@@ -1,18 +1,18 @@
-import PropTypes, { any } from "prop-types";
-// material-ui
+import PropTypes from "prop-types";
 import MuiIconButton from "@mui/material/IconButton";
-import { alpha, styled } from "@mui/material/styles";
+import { alpha, styled, Theme } from "@mui/material/styles";
 
-// project imports
-import getColors from "../../utils/GetColors";
-import getShadow from "../../utils/GetShadows";
+interface colorStyle {
+  variant: string;
+  theme: Theme;
+  color: string;
+}
 
-function getColorStyle({ variant, theme, color }: any) {
-  const colors = getColors(theme, color);
-  const { lighter, light, dark, main, contrastText } = colors;
-
-  const buttonShadow = `${color}Button`;
-  const shadows = getShadow(theme, buttonShadow);
+function getColorStyle({ variant, theme, color }: colorStyle) {
+  const main = theme.palette.primary.main;
+  const light = theme.palette.primary.light;
+  const dark = theme.palette.primary.dark;
+  const contrastText = theme.palette.primary.contrastText;
 
   const commonShadow = {
     "&::after": {
@@ -40,7 +40,7 @@ function getColorStyle({ variant, theme, color }: any) {
     case "light":
       return {
         color: main,
-        background: lighter,
+        background: light,
         "&:hover": {
           background: alpha(light, 0.5),
         },
@@ -48,7 +48,7 @@ function getColorStyle({ variant, theme, color }: any) {
       };
     case "shadow":
       return {
-        boxShadow: shadows,
+        boxShadow: "0px 2px 10px rgb(213, 213, 213)",
         color: contrastText,
         background: main,
         "&:hover": {
@@ -68,7 +68,7 @@ function getColorStyle({ variant, theme, color }: any) {
       };
     case "dashed":
       return {
-        background: lighter,
+        background: light,
         "&:hover": {
           color: dark,
           borderColor: dark,
@@ -80,7 +80,7 @@ function getColorStyle({ variant, theme, color }: any) {
       return {
         "&:hover": {
           color: dark,
-          background: color === "secondary" ? alpha(light, 0.1) : lighter,
+          background: color === "secondary" ? alpha(light, 0.1) : light,
         },
         ...commonShadow,
       };
@@ -181,9 +181,9 @@ IconButton.displayName = "IconButton";
 export default IconButton;
 
 getColorStyle.propTypes = {
-  variant: PropTypes.any,
-  theme: PropTypes.any,
-  color: PropTypes.any,
+  variant: PropTypes.string,
+  theme: PropTypes.string,
+  color: PropTypes.string,
 };
 
 IconButton.propTypes = {
@@ -191,6 +191,6 @@ IconButton.propTypes = {
   shape: PropTypes.string,
   children: PropTypes.node,
   color: PropTypes.string,
-  ref: PropTypes.any,
-  others: PropTypes.any,
+  ref: PropTypes.string,
+  others: PropTypes.string,
 };

@@ -36,7 +36,7 @@ export const partnerSlice = createSlice({
 });
 
 export const selectPartnerDetails = (state: RootState) =>
-  state.partner.partnerDetails;
+  state.partner.partnerDetails ;
 export const { setPartnerDetails } = partnerSlice.actions;
 
 export default partnerSlice.reducer;

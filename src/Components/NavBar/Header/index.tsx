@@ -3,15 +3,9 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import { SxProps, Theme } from "@mui/material";
-
-// project imports
 import AppBarStyled from "./AppBarStyled";
 import IconButton from "../../@extended/IconButton";
-
-import { handlerDrawerOpen, useGetMenuMaster } from "../../../api/menu";
 import { DRAWER_WIDTH, MINI_DRAWER_WIDTH } from "../../../config";
-
-// assets
 import MenuFoldOutlined from "@ant-design/icons/MenuFoldOutlined";
 import MenuUnfoldOutlined from "@ant-design/icons/MenuUnfoldOutlined";
 
@@ -30,7 +24,7 @@ export default function Header({ drawerOpen, onDrawerToggle }: HeaderProps) {
         aria-label="open drawer"
         onClick={onDrawerToggle}
         edge="start"
-        color="secondary"
+        color="primary"
         variant="light"
         sx={{
           color: "text.primary",
