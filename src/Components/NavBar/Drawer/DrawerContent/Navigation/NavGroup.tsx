@@ -11,17 +11,6 @@ export default function NavGroup({ item }: any) {
 
   const navCollapse = item.children?.map((menuItem: any) => {
     switch (menuItem.type) {
-      case "collapse":
-        return (
-          <Typography
-            key={menuItem.id}
-            variant="caption"
-            color="error"
-            sx={{ p: 2.5 }}
-          >
-            collapse - only available in paid version
-          </Typography>
-        );
       case "item":
         return <NavItem key={menuItem.id} item={menuItem} level={1} />;
       default:

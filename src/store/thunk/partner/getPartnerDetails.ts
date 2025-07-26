@@ -7,7 +7,7 @@ export const getPartnerDetails = createAsyncThunk(
   async (_, { rejectWithValue,fulfillWithValue }) => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/partner/details"
+        "http://localhost:5000/api/partner/all"
       );
       const data: PartnerDetail[] = response.data.data
       return fulfillWithValue(data);

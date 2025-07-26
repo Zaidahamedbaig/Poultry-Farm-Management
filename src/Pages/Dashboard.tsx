@@ -3,7 +3,6 @@ import Drawer from "../Components/NavBar/Drawer";
 import { handlerDrawerOpen, useGetMenuMaster } from "../api/menu";
 import Toolbar from "@mui/material/Toolbar";
 import Box from "@mui/material/Box";
-
 import { Outlet } from "react-router-dom";
 
 export const Dashboard = () => {

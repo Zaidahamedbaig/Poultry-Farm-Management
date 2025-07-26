@@ -1,25 +1,20 @@
 import PropTypes from 'prop-types';
 import { useMemo } from 'react';
-
-// import useMediaQuery from '@mui/material/useMediaQuery';
 import Drawer from '@mui/material/Drawer';
 import Box from '@mui/material/Box';
-
-// project imports
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 import DrawerHeader from './DrawerHeader';
 import DrawerContent from './DrawerContent';
 import MiniDrawerStyled from './MiniDrawerStyled';
-
 import { DRAWER_WIDTH } from '../../../config';
 import { handlerDrawerOpen, useGetMenuMaster } from '../../../api/menu';
 
-// ==============================|| MAIN LAYOUT - DRAWER ||============================== //
-
 export default function MainDrawer({ window }: any) {
+  const theme = useTheme();
   const { menuMaster = {} } : any = useGetMenuMaster();
   const drawerOpen = menuMaster?.isDashboardDrawerOpened ?? false;
-  const downLG = null
-  // useMediaQuery((theme) => theme.breakpoints.down('lg'));
+  const downLG = useMediaQuery(theme.breakpoints.down('lg')); 
 
   const container = window !== undefined ? () => window().document.body : undefined;
 
@@ -41,7 +36,7 @@ export default function MainDrawer({ window }: any) {
           onClose={() => handlerDrawerOpen(!drawerOpen)}
           ModalProps={{ keepMounted: true }}
           sx={{
-            display: { xs: drawerOpen ? 'block' : 'none', lg: 'none' },
+            display: { xs: 'block', lg: 'none' },
             '& .MuiDrawer-paper': {
               boxSizing: 'border-box',
               width: DRAWER_WIDTH,
@@ -58,6 +53,5 @@ export default function MainDrawer({ window }: any) {
     </Box>
   );
 }
-
 
 MainDrawer.propTypes = { window: PropTypes.func };

@@ -4,11 +4,8 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Toolbar from "@mui/material/Toolbar";
 import Box from "@mui/material/Box";
-
-// project imports
 import Drawer from "./Drawer";
 import Header from "./Header";
-
 import { handlerDrawerOpen, useGetMenuMaster } from "../../api/menu";
 
 export default function DashboardLayout() {
@@ -19,7 +16,7 @@ export default function DashboardLayout() {
     menuMaster?.isDashboardDrawerOpened ?? false
   );
 
-  // Set media-wise responsive Drawer
+ 
   useEffect(() => {
     const newOpenState = !downXL;
     handlerDrawerOpen(newOpenState);
