@@ -10,11 +10,11 @@ export const savePartnerDetails = createAsyncThunk(
         "http://localhost:5000/api/partner/add",
         data
       );
-      console.log(response);
-      //   return fulfillWithValue(data);
+     
+        return fulfillWithValue(data);
     } catch (error: any) {
       console.log(error);
-      //   return rejectWithValue(error.message);
+        return rejectWithValue(error.message);
     }
   }
 );

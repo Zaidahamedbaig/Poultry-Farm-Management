@@ -20,7 +20,6 @@ const formDataInitialState: BasePartnerDetail = {
   name: "",
   phone: "",
   address: "",
- 
 };
 const errorInitialState = {
   name: false,
@@ -34,11 +33,11 @@ const errorInitialState = {
 export const Partner = () => {
   const { menuMaster } = useGetMenuMaster();
   const partnerDetails = useAppSelector(selectPartnerDetails);
-  const dispatch = useAppDispatch();
 
+  const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(getPartnerDetails());
-  }, []);
+  }, [dispatch]);
 
   const [open, setOpen] = useState(false);
   const [error, setError] = useState(errorInitialState);
@@ -96,9 +95,8 @@ export const Partner = () => {
       }));
     } else {
       if (isActionEdit) {
-        const data = formData
         await dispatch(editPartnerDetails(formData));
-        console.log(formData)
+        console.log(formData);
       } else {
         await dispatch(savePartnerDetails(formData));
       }
@@ -159,7 +157,7 @@ export const Partner = () => {
                     actionType: "EDIT",
                     handler: async (data) => {
                       setIsActionEdit(true);
-                      setFormData((pre) => ({ ...pre, ...data }))
+                      setFormData((pre) => ({ ...pre, ...data }));
                       setOpen(true);
                     },
                   },

@@ -17,11 +17,6 @@ export default function GFTable({
   columns: ITableColumn[];
   data: Record<string, any>[];
 }) {
-  const theme = useTheme();
-  const main = theme.palette.primary.main;
-  const textColor = theme.palette.primary.contrastText;
-  const light = theme.palette.primary.light;
-
   const getVariant = (index: number) => {
     switch (index) {
       case 0:
@@ -48,7 +43,7 @@ export default function GFTable({
     }
   };
 
-  const getTableData = (column: ITableColumn, row:  any, index: number) => {
+  const getTableData = (column: ITableColumn, row: any, index: number) => {
     if (column.type === "action") {
       if (column.actions) {
         return column.actions.map((action: any, index: number) => {
@@ -66,6 +61,32 @@ export default function GFTable({
       }
     } else if (column.id === "id") {
       return index + 1;
+    } else if (column.id === "dateOfBirth" || column.id === "dateOfPurchase" || column.id ==="date") {
+      const formattedDate = new Date(row[column.id]).toLocaleDateString(
+        "en-IN"
+      );
+      return formattedDate;
+    } else if (column.id === "mortality") {
+      let totalDeaths = 0;
+      if (row[column.id].length !== 0) {
+        row[column.id].forEach((element: any) => {
+          totalDeaths += element.quantity;
+        });
+        const mortality = row["quantity"] - totalDeaths;
+        if (mortality > 0) {
+          return mortality;
+        } else {
+          return "All Dead";
+        }
+      } else {
+        return "No Deaths";
+      }
+    } else if (column.id === "status") {
+      if (row[column.id] === 1) {
+        return <p style={{ color: "#6ee533ff" }}>Active</p>;
+      } else {
+        return <p style={{ color: "#f42424ff" }}>Inactive</p>;
+      }
     } else {
       return row[column.id];
     }
@@ -75,13 +96,13 @@ export default function GFTable({
     <>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHead sx={{ backgroundColor: "#B2860D" }}>
+          <TableHead sx={{ backgroundColor: "#f8ebc6ff" }}>
             <TableRow>
               {columns.map((item) => (
                 <TableCell
                   key={item.name}
                   align="center"
-                  sx={{ fontWeight: 600, fontSize: 18, color: textColor }}
+                  sx={{ fontWeight: 600, fontSize: 18, color: "#B2860D " }}
                 >
                   {item.name}
                 </TableCell>
