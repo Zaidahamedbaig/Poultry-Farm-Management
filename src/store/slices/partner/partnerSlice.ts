@@ -25,7 +25,7 @@ export const partnerSlice = createSlice({
         state.error = ''
       })
       .addCase(getPartnerDetails.fulfilled, (state, action: PayloadAction<PartnerDetail[]>) => {
-        state.loading = false
+        state.loading = false        
         state.partnerDetails = action.payload
       })
       .addCase(getPartnerDetails.rejected, (state, action) => {
