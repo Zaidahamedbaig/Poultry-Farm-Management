@@ -215,7 +215,7 @@ const AddSalesDataDailog: React.FC<addSalesDataProps> = ({
           onChange={handleOnChange}
           type="number"
           error={error.quantity}
-          helperText={error.quantity && error.messageForQuantity}
+          helperText={error.quantity && error.messageForQuantity}    
         />
         <TextField
           sx={{ width: "100%", marginBottom: "10px" }}

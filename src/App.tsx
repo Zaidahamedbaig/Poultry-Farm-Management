@@ -33,6 +33,22 @@ const theme = createTheme({
       contrastText: "#fff",
     },
   },
+  components: {
+    MuiTextField: {
+      defaultProps: {
+        slotProps: {
+          input: {
+            inputProps: {
+              min: 0, 
+            },
+            onWheel: (e: React.WheelEvent<HTMLInputElement>) => {
+              e.currentTarget.blur(); 
+            },
+          },
+        },
+      },
+    },
+  },
 });
 
 function App() {
