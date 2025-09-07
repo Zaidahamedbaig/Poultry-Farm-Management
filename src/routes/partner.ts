@@ -6,11 +6,11 @@ import {
   getAllPartners,
 } from "../controllers/partner/partner";
 
-const router = Router();
+const partnerRoutes = Router();
 
-router.post("/add", addPartner);
-router.get("/all", getAllPartners);
-router.delete("/delete/:id", deletePartner);
-router.put("/edit/:id", editPartnerDetails);
+partnerRoutes.post("/add", addPartner);
+partnerRoutes.get("/all", getAllPartners);
+partnerRoutes.delete("/delete/:id", deletePartner);
+partnerRoutes.put("/edit/:id", editPartnerDetails);
 
-export default router;
+export default partnerRoutes;

@@ -1,10 +1,12 @@
 import express, { Request, Response } from "express";
-import partnerRoutes from "./routes/partner";
 
 import cors from "cors";
 import dotenv from "dotenv";
 import { connectDB } from "./config/db";
-import { log } from "console";
+import partnerRoutes from "./routes/partner";
+import stockRoutes from "./routes/stock";
+import salesRoutes from "./routes/sales";
+import feedRoutes from "./routes/feed";
 
 dotenv.config();
 const app = express();
@@ -32,6 +34,9 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.use("/api/partner", partnerRoutes);
+app.use("/api/stock", stockRoutes);
+app.use("/api/sales", salesRoutes);
+app.use("/api/feed", feedRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
