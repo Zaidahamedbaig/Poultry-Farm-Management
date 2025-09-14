@@ -233,6 +233,7 @@ const AddSalesDataDailog: React.FC<addSalesDataProps> = ({
             sx={{ width: "100%", marginBottom: "10px" }}
             label="Select Date of Sale"
             name="date"
+            disableFuture
             slotProps={{
               textField: {
                 error: error.date,

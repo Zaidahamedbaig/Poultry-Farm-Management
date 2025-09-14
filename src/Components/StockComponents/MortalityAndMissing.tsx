@@ -175,6 +175,7 @@ const MortalityAndMissing: React.FC<mortalityOrMissingProps> = ({
                 : "Missing"
             }`}
             name="date"
+            disableFuture
             slotProps={{
               textField: {
                 error: mortalityOrMissingDataError.date,

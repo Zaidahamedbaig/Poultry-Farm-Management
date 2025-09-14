@@ -112,7 +112,7 @@ export const Dashboard = () => {
         >
           <Box>
             <Grid container spacing={2} marginBottom={2}>
-              <Grid offset={10} size={2}>
+              <Grid offset={10.2} size={2}>
                 <TextField
                   select
                   label="Select Batch"
@@ -127,7 +127,7 @@ export const Dashboard = () => {
                       setCurrentStockBatch(newSelectedBatch);
                     }
                   }}
-                  sx={{ width: 200 }}
+                  sx={{ maxWidth: 200 }}
                   fullWidth
                   margin="normal"
                 >
@@ -148,6 +148,8 @@ export const Dashboard = () => {
               display: "flex",
               justifyContent: "space-between",
               mt: "20px",
+              maxWidth:"1500px"
+              
             }}
           >
             <QuantityCard

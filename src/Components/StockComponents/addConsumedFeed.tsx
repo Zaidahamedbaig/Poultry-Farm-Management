@@ -207,6 +207,7 @@ export const AddConsumedFeedDailog: React.FC<addConsumedFeedProps> = ({
             sx={{ width: "100%", marginBottom: "10px" }}
             label="Select Date of Adding Feed"
             name="date"
+            disableFuture
             slotProps={{
               textField: {
                 error: addFeedDataError.date,

@@ -11,6 +11,8 @@ const DashboardCard: React.FC<DashboardCardProps> = ({ children }) => {
   return (
     <Card
       sx={{
+        flex: 1, 
+        maxWidth:"285px",
         width: { xs: "100%", sm: 300 },
         height: 150,
         borderRadius: 2,

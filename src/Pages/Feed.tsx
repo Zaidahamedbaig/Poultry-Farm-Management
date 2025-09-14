@@ -206,6 +206,7 @@ export const Feed = () => {
             sx={{ width: "100%", marginBottom: "10px", mt: "10px" }}
             label="Select Date of Feed Purchased"
             name="date"
+            disableFuture
             slotProps={{
               textField: {
                 error: error.date,

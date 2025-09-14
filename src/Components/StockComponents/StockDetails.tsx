@@ -156,6 +156,7 @@ const StockDetails: React.FC<StockDetailsProps> = ({ open, setOpen }) => {
             sx={{ width: "100%", marginBottom: "10px" }}
             label="Select Date of Birth"
             name="dateOfBirth"
+            disableFuture
             slotProps={{
               textField: {
                 error: error.dateOfBirth,
@@ -188,6 +189,7 @@ const StockDetails: React.FC<StockDetailsProps> = ({ open, setOpen }) => {
             sx={{ width: "100%", marginBottom: "10px" }}
             label="Select Date of Purchase"
             name="dateOfPurchase"
+            disableFuture
             format="yyyy-MM-dd"
             value={dateOfPurchase}
             slotProps={{
