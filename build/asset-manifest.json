@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/apps-3825/PMS/static/css/main.f855e6bc.css",
+    "main.js": "/apps-3825/PMS/static/js/main.23bc6a4b.js",
+    "static/js/453.9200614e.chunk.js": "/apps-3825/PMS/static/js/453.9200614e.chunk.js",
+    "index.html": "/apps-3825/PMS/index.html",
+    "main.f855e6bc.css.map": "/apps-3825/PMS/static/css/main.f855e6bc.css.map",
+    "main.23bc6a4b.js.map": "/apps-3825/PMS/static/js/main.23bc6a4b.js.map",
+    "453.9200614e.chunk.js.map": "/apps-3825/PMS/static/js/453.9200614e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f855e6bc.css",
+    "static/js/main.23bc6a4b.js"
+  ]
+}
