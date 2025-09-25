@@ -1,5 +1,0 @@
-export * from "./Dashboard"
-export * from "./Feed"
-export * from "./Partner"
-export * from "./Sales"
-export * from "./Stock"
